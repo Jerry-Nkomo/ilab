@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+	<configuration>
+		<!-- Report Theme -->
+		<!-- standard or dark -->
+		<theme>standard</theme>
+		
+		<!-- document encoding -->
+		<!-- defaults to UTF-8 -->
+		<encoding>UTF-8</encoding>
+		
+		<!-- Protocol for script and stylesheet -->
+		<!-- defaults to https -->
+		<protocol>https</protocol>
+		
+		<!-- Document Title -->
+		<documentTitle>Jerry Nkomo ILAB Assessment</documentTitle>
+		
+		<!-- Report Name - Displayed at top-nav -->
+		<reportName>Jerry Nkomo ILAB Automation Assessment Test Results</reportName>
+		
+		<!-- Timestamp Format -->
+		<timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+		
+		<!-- Location of the charts in the test view -->
+		<!-- top or bottom -->
+		<testViewChartLocation>bottom</testViewChartLocation>
+		
+		<!-- Custom Javascript -->
+		<script>
+			<![CDATA[ 
+			$(document).ready(function(){
+			});
+			]]>
+		</script>
+		
+		<!-- Custom styles -->
+		<style>
+			<![CDATA[ 
+			]]>
+		</style>
+	</configuration>
+</extentreports>
