@@ -45,3 +45,8 @@ Running/Executing script
 NOTE:
 You need to go to selenium.dev/downloads > scroll down to browsers > expand browses and download the version that matches your browser.
 
+For Report:
+1. Go to target
+2. You can then open JerryAutomationStepReport.html to see steps that passed or failed
+3. Or open JerryAutomationFeatureReport.html for summary of features ran
+4. Screenshots can be found in images folder inside target, stored based on date which the script was ran

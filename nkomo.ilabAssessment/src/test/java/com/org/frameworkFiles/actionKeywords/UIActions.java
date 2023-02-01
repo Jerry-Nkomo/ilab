@@ -49,6 +49,15 @@ public class UIActions {
 	public static ExtentTest features;
 	public static ExtentTest logger;
 	
+	/********************************************
+	 * Method Name: Browser
+	 * Method Description: To initialize browser and set browser options
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param browser
+	 * @return driver
+	 * @throws Exception
+	 */
 	public static WebDriver browser(String browser) throws Exception{
 		boolean browserFound = true;
 		
@@ -78,7 +87,7 @@ driver=new FirefoxDriver(options);
 		
 		if(browserFound) {
 			driver.manage().window().maximize();
-			//logger.log(Status.PASS, browser+" browser launched and maximazed successfully");
+			
 			return driver;
 		}else {
 			logger.log(Status.FAIL, "Could not launch "+browser+" browser");
@@ -86,6 +95,13 @@ driver=new FirefoxDriver(options);
 		}
 	}
 	
+	/********************************************
+	 * Method Name: closeBrowser
+	 * Method Description: To close and stop writing into report as well as close browser
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @throws Exception
+	 */
 	public static void closeBrowser() throws Exception{
 		try {
 			if (driver != null) {
@@ -98,6 +114,13 @@ driver=new FirefoxDriver(options);
 		}
 	}
 	
+	/********************************************
+	 * Method Name: createReport
+	 * Method Description: To create and prepare reporting file
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @throws IOException
+	 */
 	public static void createReport() throws IOException{
 		final File CONF = new File("src/test/resources/extent-config.xml");
 		sparkReporter = new ExtentSparkReporter("target/JerryAutomationStepReport.html");
@@ -105,10 +128,24 @@ driver=new FirefoxDriver(options);
 		extentReports.attachReporter(sparkReporter);
 	}
 	
+	/********************************************
+	 * Method Name: createFeature
+	 * Method Description: To initialize a feature
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param featureName
+	 */
 	public static void createFeature(String featureName) {
 		features = extentReports.createTest(featureName);
 	}
 	
+	/********************************************
+	 * Method Name: scenario
+	 * Method Description: To initialize scenario/steps in a report
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param stepName
+	 */
 	public static void scenario(String stepName) {
 		logger = features.createNode(stepName);
 	}
@@ -124,6 +161,15 @@ driver=new FirefoxDriver(options);
 		return featureName;
 	}
 
+	/********************************************
+	 * Method Name: captureScreenShot
+	 * Method Description: To capture screenshot
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param fieldName
+	 * @return strImage
+	 * @throws Exception
+	 */
 	public static String captureScreenShot(String fieldName) throws Exception {
 		try {
 			Date date = new Date();
@@ -139,6 +185,15 @@ driver=new FirefoxDriver(options);
 		}
 	}
 	
+	/********************************************
+	 * Method Name: readDataFromExcel
+	 * Method Description: To read data from excel
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param sheetName, scenario
+	 * @return objRS
+	 * @throws Exception
+	 */
 	public static Recordset readDataFromExcel(String sheetName, String scenario) throws Exception {
 		Recordset objRS=null;
 		try {
@@ -177,6 +232,15 @@ driver=new FirefoxDriver(options);
 		return excelData;
 	}
 	
+	/********************************************
+	 * Method Name: elementExists
+	 * Method Description: To check if web element exists
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param element
+	 * @return elementExists
+	 * @throws Exception
+	 */
 	public static boolean elementExists(WebElement element) throws Exception {
 		boolean elementExits = false;
 		if (element.isDisplayed()) {
@@ -186,6 +250,14 @@ driver=new FirefoxDriver(options);
 		return elementExits;
 	}
 	
+	/********************************************
+	 * Method Name: click
+	 * Method Description: For clicking an element
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param UIName, elementLocator
+	 * @throws Exception
+	 */
 	public static void click(String UIName, WebElement elementLocator) throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, GlobalVariables.OBJ_MAX_WAIT);
 		wait.until(ExpectedConditions.visibilityOf(elementLocator));
@@ -202,10 +274,26 @@ driver=new FirefoxDriver(options);
 		}
 	}
 	
+	/********************************************
+	 * Method Name: scrollBy
+	 * Method Description: To scroll by specific coordinates
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param firstCoordinate, secondCoordinate
+	 */
 	public static void scrollBy(int firstCoordinate, int secondCoordinate) {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("window.scrollBy("+firstCoordinate+","+secondCoordinate+")");
 	}
+	
+	/********************************************
+	 * Method Name: input
+	 * Method Description: To input value on an element
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param UIName, elementLocator, data
+	 * @throws Exception
+	 */
 	public static void input(String UIName, WebElement elementLocator, String data) throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, GlobalVariables.OBJ_MAX_WAIT);
 		
@@ -226,6 +314,13 @@ driver=new FirefoxDriver(options);
 		}
 	}
 	
+	/********************************************
+	 * Method Name: switchFrame
+	 * Method Description: To switch between iframes
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param frameName
+	 */
 	public static void switchFrame(String frameName) {
 		try {
 			//driver.switchTo().defaultContent();
@@ -236,6 +331,13 @@ driver=new FirefoxDriver(options);
 		}
 	}
 	
+	/********************************************
+	 * Method Name: switchFrame
+	 * Method Description: To switch between iframes
+	 * Date Created: 28/01/2023
+	 * @author Jerry Nkomo
+	 * @param frameName
+	 */
 	public static void switchFrame(WebElement frameName) {
 		try {
 			//driver.switchTo().defaultContent();
